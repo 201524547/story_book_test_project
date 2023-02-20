@@ -1,9 +1,8 @@
+import React from 'react';
+import ToDoListPage from './feature/todoList/page/ToDoListPage';
+
 function App() {
-  return (
-    <div>
-      안녕하세요
-    </div>
-  );
+	return <ToDoListPage />;
 }
 
 export default App;
