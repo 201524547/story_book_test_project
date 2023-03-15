@@ -17,7 +17,7 @@ const Input = styled.input<IInput>`
 	box-sizing: border-box;
 
 	&:focus {
-		border: 1.5px solid #3c6df0;
+		outline: 1px solid #3c3c3c;
 	}
 `;
 

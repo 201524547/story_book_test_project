@@ -1,11 +1,18 @@
 import styled from 'styled-components';
+import React from 'react';
 
-interface IButton {
+export interface IButton {
 	width?: string;
 	height?: string;
+
+	label?: string;
+
+	disabled?: boolean;
+
+	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = styled.button<IButton>`
+const ButtonContainer = styled.button<IButton>`
 	width: ${({ width }) => (width ? width : '100%')};
 	height: ${({ height }) => (height ? height : '32px')};
 
@@ -20,6 +27,22 @@ const Button = styled.button<IButton>`
 	background-color: #fdfdfd;
 
 	box-sizing: border-box;
+
+	.disable {
+	}
 `;
+
+const Button = ({ width, height, label, disabled, onClick }: IButton) => {
+	return (
+		<ButtonContainer
+			width={width}
+			height={height}
+			onClick={onClick}
+			disabled={disabled}
+		>
+			{label}
+		</ButtonContainer>
+	);
+};
 
 export default Button;

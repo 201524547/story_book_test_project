@@ -6,7 +6,7 @@ import { Task } from '../utils/toDoList.type';
 import Input from '../../../common/input/Input';
 import Button from '../../../common/button/Button';
 
-interface ITodoItem {
+export interface ITodoItem {
 	task: Task;
 
 	onDelete: () => void;
@@ -97,6 +97,14 @@ function ToDoItem({ task, onDelete, onCheck, onModify }: ITodoItem) {
 		}
 	};
 
+	const onDeleteButtonClick = () => {
+		if (isModify) {
+			setIsModify(false);
+		} else {
+			onDelete();
+		}
+	};
+
 	const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNewTask(e.target.value);
 	};
@@ -126,12 +134,16 @@ function ToDoItem({ task, onDelete, onCheck, onModify }: ITodoItem) {
 			</Content>
 			<Footer>
 				<ButtonSection>
-					<Button width={'44px'} onClick={onModifyButtonClick}>
-						{isModify ? '확인' : '수정'}
-					</Button>
-					<Button width={'44px'} onClick={onDelete}>
-						삭제
-					</Button>
+					<Button
+						width={'44px'}
+						label={isModify ? '확인' : '수정'}
+						onClick={onModifyButtonClick}
+					/>
+					<Button
+						width={'44px'}
+						label={isModify ? '취소' : '삭제'}
+						onClick={onDeleteButtonClick}
+					/>
 				</ButtonSection>
 			</Footer>
 		</Container>

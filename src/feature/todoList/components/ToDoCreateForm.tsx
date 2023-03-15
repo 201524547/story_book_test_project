@@ -43,9 +43,7 @@ function ToDoCreateForm({ onSubmit }: IToDoCreateForm) {
 	return (
 		<Container>
 			<Input width={'280px'} value={newTask} onChange={onChange} />
-			<Button width={'40px'} onClick={handleSubmit}>
-				등록
-			</Button>
+			<Button width={'40px'} label={'등록'} onClick={handleSubmit} />
 		</Container>
 	);
 }
